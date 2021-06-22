@@ -9,19 +9,42 @@ This project utilizes Visual Basic for Applications (VBA) to refactor code, most
 
 With the exception of stocks ENPH and RUN, all stocks' had a negative rate of return for the year 2018.  However, it should be noted that the decrease in return in 2018 for most stocks would not have necessarily completely erased the returns from 2017.  Instead, one could look at the data to evaluate the most stable stocks (had the smallest loss rates in 2017 such as VSLR and TERP) or the stocks for companies that are in a multi-year growth pattern, such as ENPH and RUN.
 
-[INSERT PHOTOS OF STOCK PERFORMANCE]
+#### 2017 and 2018 Returns
+![2017 Returns](Resources/2017_Refactored.PNG)  ![2018 Returns](Resources/2018_Refactored.PNG)
 
 ### Script Execution Times
 
 Upon refactoring, there was a significant reduction in script execution times.  Refactoring resulted in making the code far more efficient.  
 
+ ![2017 Original Results](Resources/VBA_Challenge_2017.PNG)                                           ![2017 Refactored Results](Resources/VBA_Challenge_2017.PNG)
+
+2017 Refactored Results
+
+![2018 Refactored Results](Resources/VBA_Challenge_2017.PNG)
+
+2018 Refactored Results
+
 Utilizing a tickerIndex variable in several formulae allowed us to use this variable for multiple outputs instead of creating a new variable for each output (ticker string value, total daily volume, and rate of return).
 
-[INSERT CODE FOR tickerIndex VARIABLE CREATION AND USE]
+#### Example Ticker Index Code to Utilize "tickerIndex" as a Variable
+
+tickerIndex = 0
+  For tickerIndex = 0 To 11
+    If Cells(i, 1).Value = tickers(tickerIndex) Then
+    tickerVolumes(tickerIndex) = tickerVolumes(tickerIndex) + Cells(i, 8).Value
+          
+    End If
+  Next tickerIndex
+
+###
 
 Perhaps the most important change to the code during refactoring was the utilization of a simple if/then statement that increased the ticker index and started the loop with the next tickerIndex before the entire data set was looped over unnecessarily.  This was doable since the data already had the ticker symbols conveniently grouped together, but any data set can be reorganized to do this prior to writing the VBA script.
 
-[INSERT CODE FOR ENDING FOR LOOP]
+#### Example If/Then Code for Ending a Loop's Current Iteration When Certain Criteria are Met
+  If Cells(i + 1, 1).Value <> tickers(tickerIndex) Then
+  tickerIndex = tickerIndex + 1
+  
+  End If
 
 ## Summary
 
