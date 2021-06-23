@@ -16,15 +16,20 @@ With the exception of stocks ENPH and RUN, all stocks' had a negative rate of re
 
 Upon refactoring, there was a significant reduction in script execution times.  Refactoring resulted in making the code far more efficient.  
 
- ![2017 Original Results](Resources/VBA_Challenge_2017.PNG)                                           ![2017 Refactored Results](Resources/VBA_Challenge_2017.PNG)
+##### 2017 Original and Refactored Results
 
-2017 Refactored Results
+![2017 Original Results](Resources/2017CodeRuntime_0.PNG) ![2017 Refactored Results](Resources/VBA_Challenge_2017.PNG)
 
-![2018 Refactored Results](Resources/VBA_Challenge_2017.PNG)
 
-2018 Refactored Results
+##### 2018 Original and Refactored Results
+
+![2018 Original Results](Resources/2018CodeRuntime_0.PNG) ![2018 Refactored Results](Resources/VBA_Challenge_2018.PNG)
+
+###
 
 Utilizing a tickerIndex variable in several formulae allowed us to use this variable for multiple outputs instead of creating a new variable for each output (ticker string value, total daily volume, and rate of return).
+
+---
 
 #### Example Ticker Index Code to Utilize "tickerIndex" as a Variable
 
@@ -33,12 +38,17 @@ tickerIndex = 0
     If Cells(i, 1).Value = tickers(tickerIndex) Then
     tickerVolumes(tickerIndex) = tickerVolumes(tickerIndex) + Cells(i, 8).Value
           
-    End If
+   End If 
+   
   Next tickerIndex
 
 ###
 
+---
+
 Perhaps the most important change to the code during refactoring was the utilization of a simple if/then statement that increased the ticker index and started the loop with the next tickerIndex before the entire data set was looped over unnecessarily.  This was doable since the data already had the ticker symbols conveniently grouped together, but any data set can be reorganized to do this prior to writing the VBA script.
+
+---
 
 #### Example If/Then Code for Ending a Loop's Current Iteration When Certain Criteria are Met
   If Cells(i + 1, 1).Value <> tickers(tickerIndex) Then
@@ -46,12 +56,14 @@ Perhaps the most important change to the code during refactoring was the utiliza
   
   End If
 
+---
+
 ## Summary
 
 ### Advantages and Disadvantages of Refactoring Code
 
 The advantages of refactoring code are relatively straightforward.  When code is initially created, it may not have been coded as efficiently as it could be.  There are multiple ways of getting a certain output from a script or program, but some ways may be more efficient than others.  While modern computers are powerful devices, those who create these scripts and programs should strive for the most efficient code possible to minimize resource usage.  Refactoring can also make code more accessible and easier to read and follow by others in a team environment.  Finally, refactoring will always challenge the programmer to learn new tips, tricks, and resources for any project.
-The disadvantages of refactoring include the time it takes to refactor in a meaningful and impactful way within a reasonable amount of time.  Exact placement of lines of code, exact syntax, and unexpected results when the programmer is certain of a different outcome can be (and were) all experienced, though this is not unique to VBA or this project.  These experiences can be extremely frustrating.  
+The disadvantages of refactoring include the time it takes to refactor in a meaningful and impactful way within a reasonable amount of time.  Exact placement of lines of code, exact syntax, and unexpected results when the programmer is certain of a different outcome can be (and were) all experienced, though this is not unique to VBA or this project.  These experiences can be extremely frustrating. 
 
 ### Advantages and Disadvantages of Refactoring for This Specific Project
 
